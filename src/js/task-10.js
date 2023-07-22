@@ -4,25 +4,33 @@ function getRandomHexColor() {
     .padStart(6, 0)}`;
 }
 
-const createBox = (quantity) => {
-  let box = document.createElement("div")
-  box.style.backgroundColor = getRandomHexColor();
-  box.style.width = "30px"
-  box.style.height = "30px"
-  box.style.marginTop = "5px";
-  console.log(box)
-  boxesEl.append(box)
-}
-
-
 const generalDivEl = document.querySelector("#controls");
 const childrenDevEl = generalDivEl.children;
 const boxesEl = document.querySelector("#boxes")
 
+const createBox = (quantity) => {
+  let quantityPx = 30;
+  console.log(`We are creating for you ${childrenDevEl[0].value} boxses`)
+  for (let i = 1; i <= quantity; i += 1) {
+    let box = document.createElement("div")
+    box.style.backgroundColor = getRandomHexColor();
+    box.style.width = `${quantityPx}px`
+    box.style.height = `${quantityPx}px`
+    box.style.margin = "10px";
+    box.classList.add("stranger--box")
+    boxesEl.append(box)
+    quantityPx += 10;
+  }
+}
+
+
+const destroyBoxes = () => {
+  document.querySelectorAll(".stranger--box").forEach(item => item.remove())
+  console.log(`We are  deleting  all boxses for you `)
+}
+
 
 childrenDevEl[1].addEventListener("click", () => {
-  console.log(`We create for you ${childrenDevEl[0].value} boxses`)
-  for (let i = 0; i < childrenDevEl[0].value; i += 1) {
-    createBox(childrenDevEl[0].value)
-  }
+  createBox(childrenDevEl[0].value)
 })
+childrenDevEl[2].addEventListener("click", destroyBoxes)
