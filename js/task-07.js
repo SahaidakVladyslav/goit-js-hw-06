@@ -1,12 +1,12 @@
 const inputEl = document.querySelector("#font-size-control")
 const spanEl = document.querySelector("#text")
-
 const min = 16;
 const max = 96;
 
+spanEl.style.fontSize = `${parseInt(inputEl.value)}px`
 
-// spanEl.style.fontSize = "23px"
-inputEl.addEventListener("change", (event) => {
+
+inputEl.addEventListener("input", (event) => {
     const fontSize = parseInt(event.currentTarget.value);
     console.log(fontSize)
     if (fontSize >= min && fontSize <= max) {

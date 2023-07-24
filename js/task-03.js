@@ -13,19 +13,15 @@ const images = [
   },
 ];
 const listEl = document.querySelector(".gallery");
+const items = markupImg(images)
 
+function markupImg(element) {
 
+  return images.map(({ url, alt }) => {
+    return `
+    <li><img src="${url}" alt="${alt}"></img></li>
+    `
+  }).join(``)
+}
 
-images.forEach(element => {
-  let itemEl = document.createElement("li");
-  let imgEl = document.createElement("img");
-  imgEl.setAttribute(`alt`, `${element.alt}`);
-  imgEl.setAttribute(`src`, `${element.url}`)
-  console.log(imgEl)
-  itemEl.insertAdjacentHTML("afterbegin", imgEl.outerHTML)
-
-  console.log(itemEl)
-  listEl.insertAdjacentHTML("afterbegin", itemEl.outerHTML)
-});
-
-
+listEl.insertAdjacentHTML("afterbegin", items)
