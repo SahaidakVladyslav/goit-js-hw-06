@@ -33,4 +33,6 @@ const destroyBoxes = () => {
 childrenDevEl[1].addEventListener("click", () => {
   createBox(childrenDevEl[0].value)
 })
-childrenDevEl[2].addEventListener("click", destroyBoxes)
+childrenDevEl[2].addEventListener("click", () => {
+  destroyBoxes()
+})
